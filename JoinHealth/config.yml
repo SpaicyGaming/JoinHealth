@@ -1,0 +1,26 @@
+##################################
+#       JoinHealth plugin        #
+#               by               #
+#          SpaicyGaming          #
+##################################
+### 1 HEARTH = 2 LIFE
+
+# Users = Players with the permission joinhealth.user
+# Vips = Players with the permission joinhealth.vip
+Join:
+  WelcomeMessage: true
+  SetFoodLevel:
+    active: true
+    UsersFoodLevel: 20
+    VipsFoodLevel: 20
+  SetHealth:
+    active: true
+    UsersHealthLevel: 20.0
+    VipsHealthLevel: 20.0
+
+Utils:
+  DisableHungerLoss: true
+  DisableLifeLoss: true
+
+## DO NOT TOUCH ##
+ConfigVersion: 1.1
