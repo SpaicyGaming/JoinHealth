@@ -1,5 +1,6 @@
 package io.github.spaicygaming.joinhealth.listener;
 
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -15,7 +16,7 @@ public class JoinEventListerner implements Listener {
 	private JoinHealth main = JoinHealth.getInstance();
 	private FileConfiguration config = main.getConfig();
 
-	@EventHandler(priority = EventPriority.HIGH)
+	@EventHandler
 	public void onPlayerJoin(PlayerJoinEvent e) {
 		Player p = e.getPlayer();
 		
@@ -23,11 +24,26 @@ public class JoinEventListerner implements Listener {
 		 * FOOD
 		 */
 		if (config.getBoolean("Join.SetFoodLevel.active")){
-			if (p.hasPermission("joinhealth.user"))
-				p.setFoodLevel(config.getInt("Join.SetFoodLevel.UsersFoodLevel"));
+			if (p.hasPermission("joinhealth.user")){
+				Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(main, new Runnable(){
+					@Override
+					public void run() {
+						p.setFoodLevel(config.getInt("Join.SetFoodLevel.UsersFoodLevel"));
+						
+					}
+				}, 5L);
+			}
 			
-			if (p.hasPermission("joinhealth.vip"))
-				p.setFoodLevel(config.getInt("Join.SetFoodLevel.VipsFoodLevel"));
+			if (p.hasPermission("joinhealth.vip")){
+				Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(main, new Runnable(){
+					@Override
+					public void run() {
+						p.setFoodLevel(config.getInt("Join.SetFoodLevel.VipsFoodLevel"));
+						
+					}
+				}, 5L);
+			}
+				
 		}
 		
 		/*
@@ -53,11 +69,22 @@ public class JoinEventListerner implements Listener {
 			p.sendMessage(ChatColor.RED + "---------------------------------------");
 		}
 		
+		/*
+		 * NOTIFY UPDATES
+		 */
+		if (p.isOp() || p.hasPermission("joinhealth.notify") || p.hasPermission("*")){
+			if(main.updates.length == 2){
+				p.sendMessage(ChatColor.GREEN + main.getSeparators(31, '*'));
+				p.sendMessage("§6§l[§cPanickyAdmin§6] New update available:");
+				p.sendMessage("§6Current version: §e" + main.getDescription().getVersion());
+				p.sendMessage("§6New version: §e" + main.updates[0]);
+				p.sendMessage("§6What's new: §e" + main.updates[1]);
+				p.sendMessage("§6Download here: §e" + main.getDescription().getWebsite());
+				p.sendMessage(ChatColor.GREEN + main.getSeparators(31, '*'));
+			}
+		}
 
 	}
 	
 	
-	
-	
-
 }

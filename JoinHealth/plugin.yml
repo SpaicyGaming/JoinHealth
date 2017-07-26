@@ -1,5 +1,6 @@
 main: io.github.spaicygaming.joinhealth.JoinHealth
+website: https://www.spigotmc.org/resources/joinhealth.36546/
 
 name: JoinHealth
+version: 1.2
 author: SpaicyGaming
-version: 1.1

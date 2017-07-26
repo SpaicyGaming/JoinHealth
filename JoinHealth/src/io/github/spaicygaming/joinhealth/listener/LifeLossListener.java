@@ -6,7 +6,7 @@ import org.bukkit.event.entity.EntityDamageEvent;
 
 import io.github.spaicygaming.joinhealth.JoinHealth;
 
-public class LifeLossListener implements Listener{
+public class LifeLossListener implements Listener {
 	
 	private JoinHealth main = JoinHealth.getInstance();
 	

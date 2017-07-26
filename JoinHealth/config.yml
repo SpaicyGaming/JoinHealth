@@ -3,10 +3,10 @@
 #               by               #
 #          SpaicyGaming          #
 ##################################
-### 1 HEARTH = 2 LIFE
 
 # Users = Players with the permission joinhealth.user
 # Vips = Players with the permission joinhealth.vip
+
 Join:
   WelcomeMessage: true
   SetFoodLevel:
@@ -24,3 +24,4 @@ Utils:
 
 ## DO NOT TOUCH ##
 ConfigVersion: 1.1
+CheckForUpdates: true
