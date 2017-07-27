@@ -1,9 +1,6 @@
 package io.github.spaicygaming.joinhealth;
 
 import org.bukkit.ChatColor;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -17,6 +14,9 @@ public class JoinHealth extends JavaPlugin implements Listener {
 
 	boolean checkUpdates = getConfig().getBoolean("CheckForUpdates");
 	public Object[] updates;
+	public String spigotProject = getDescription().getWebsite();
+	public String githubProject = "";
+	public String ver = getDescription().getVersion();
 	
 	public void onEnable() {
 		instance = this;
@@ -27,8 +27,9 @@ public class JoinHealth extends JavaPlugin implements Listener {
 		getServer().getPluginManager().registerEvents(new FoodChangeListener(), this);
 		getServer().getPluginManager().registerEvents(new LifeLossListener(), this);
 
+		getCommand("joinhealth").setExecutor(new JoinHealthCmdExec());
 		
-		if (!getConfig().getString("ConfigVersion").equals("1.1")) {
+		if (!getConfig().getString("ConfigVersion").equals("1.2")) {
 			getLogger().warning(ChatColor.RED + "OUTDATED CONFIG FILE DETECTED, PLEASE DELETE THE OLD ONE!");
 		}
 		getLogger().info("JoinHealth has been Enabled!");
@@ -39,8 +40,8 @@ public class JoinHealth extends JavaPlugin implements Listener {
 			
 			if (updates.length == 2){
 				getLogger().info(getSeparators(70, '='));
-				getLogger().info("Update found! Download here: " + getDescription().getWebsite());
-				getLogger().info("Current version: " + getDescription().getVersion());
+				getLogger().info("Update found! Download here: " + spigotProject);
+				getLogger().info("Current version: " + ver);
 				getLogger().info("New version: " + updates[0]);
 				getLogger().info("What's new: " + updates[1]);
 				getLogger().info(getSeparators(70, '='));

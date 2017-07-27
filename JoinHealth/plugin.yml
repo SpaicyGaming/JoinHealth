@@ -4,3 +4,8 @@ website: https://www.spigotmc.org/resources/joinhealth.36546/
 name: JoinHealth
 version: 1.2
 author: SpaicyGaming
+
+commands:
+    joinhealth:
+        description: Base command
+        aliases: jh
