@@ -14,7 +14,7 @@ public class UpdateChecker{
 	
 	final static String VERSION_URL = "https://api.spiget.org/v2/resources/36546/versions?size=" + Integer.MAX_VALUE + "&spiget__ua=SpigetDocs";
 	final static String DESCRIPTION_URL = "https://api.spiget.org/v2/resources/36546/updates?size=" + Integer.MAX_VALUE + "&spiget__ua=SpigetDocs";
-	
+
 	public static Object[] getLastUpdate(){
 		try {
 			JSONArray versionsArray = (JSONArray) JSONValue.parseWithException(IOUtils.toString(new URL(String.valueOf(VERSION_URL))));

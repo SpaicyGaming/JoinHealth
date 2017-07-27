@@ -59,6 +59,12 @@ public class JoinHealth extends JavaPlugin implements Listener {
 		return instance;
 	}
 	
+	/**
+	 * Build a char string
+	 * @param value Number of characters
+	 * @param charValue The character
+	 * @return the string
+	 */
 	public String getSeparators(int value, char charValue){
 		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < value; i++){

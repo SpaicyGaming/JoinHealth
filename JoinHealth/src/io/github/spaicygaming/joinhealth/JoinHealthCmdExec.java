@@ -13,7 +13,6 @@ public class JoinHealthCmdExec implements CommandExecutor{
 	
 	@Override
 	public boolean onCommand(CommandSender s, Command cmd, String alias, String[] args) {
-		
 		if (cmd.getName().equalsIgnoreCase("joinhealth")){
 			/*
 			 * ARGS 0
@@ -71,9 +70,19 @@ public class JoinHealthCmdExec implements CommandExecutor{
 		return false;
 	}
 
+	/**
+	 * Color a string in the config.yml
+	 * @param str The config string path
+	 * @return The colored string
+	 */
 	private String colorMsg(String str){
 		return ChatColor.translateAlternateColorCodes('&', main.getConfig().getString(str));
 	}
+	
+	/**
+	 * Print the help menu
+	 * @param s The command sender
+	 */
 	
 	private void printMenu(CommandSender s){
 		s.sendMessage("");
